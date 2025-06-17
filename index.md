@@ -59,6 +59,11 @@ For your first milestone, describe what your project is and how you plan to buil
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8jSSuW3aXuQ?si=q1MaQJ7DJ7ZseBjN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+For your first milestone, describe what your project is and how you plan to build it. You can include:
+- An explanation about the different components of your project and how they will all integrate together
+- Technical progress you've made so far
+- Challenges you're facing and solving in your future milestones
+- What your plan is to complete your project
 My project made up by a board that hold all the electronics and all the electronics, the soldering process make those parts all works well with each other under the good conductivity of the soldering merterial. I learned how to soldering with this project. While I am on the path about soldering, I accidently soldering the wrong part on the board which make me realized that desoldering is really hard ao try to becareful all the time.
 
 # Schematics 
