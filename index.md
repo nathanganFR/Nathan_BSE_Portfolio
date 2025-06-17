@@ -13,7 +13,7 @@ You should comment out all portions of your portfolio that you have not complete
 
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
-![Headstone Image](start up project.jpg)
+![Headstone Image](NathanG.HEIC)
   
 # Final Milestone
 
@@ -53,7 +53,7 @@ For your first milestone, describe what your project is and how you plan to buil
 - Challenges you're facing and solving in your future milestones
 - What your plan is to complete your project
 
-# start up project Milestone
+# starter up project Milestone
 
 ![Headstone Image](start up project.jpg)
 
