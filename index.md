@@ -60,7 +60,7 @@ For your first milestone, describe what your project is and how you plan to buil
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8jSSuW3aXuQ?si=q1MaQJ7DJ7ZseBjN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
-My project made up by a board that hold all the electronics and all the electronics, the soldering process make those parts all works well with each other under the good conductivity of the soldering merterial. I learned how to soldering with this project. While I am on the path about soldering, I accidently soldering the wrong part on the board which make me realized that desoldering is really hard ao try to becareful all the time.
+My project made up by a board that hold all the electronics and all the electronics, the soldering process make those parts all works well with each other under the good conductivity of the soldering merterial. It is really cool that you can play 5 different game and you can also change the brightness and volume. I learned how to soldering with this project. While I am on the path about soldering, I accidently soldering the wrong part on the board which make me realized that desoldering is really hard ao try to becareful all the time. 
 
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
