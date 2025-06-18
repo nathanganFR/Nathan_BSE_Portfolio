@@ -59,8 +59,18 @@ For your first milestone, describe what your project is and how you plan to buil
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8jSSuW3aXuQ?si=q1MaQJ7DJ7ZseBjN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+## Description
+
 My project is DIY Solder Project Game Kit that have 5 Retro Classic Games for Electronic Soldering Practice and Learning, Comfortable Acrylic Case and Handheld Size, Ideal Gift for Family and Friends by VOGURTIME
-My project made up by a board that hold all the electronics and all the electronics, the soldering process make those parts all works well with each other under the good conductivity of the soldering merterial. There are several Power-supply Options – The game kit’s working voltage is DC 3.5-5.5V. It is at the same time handy and nice - After you done the whole kit with quality acrylic case, the kit’s size is 3 x 4.2 x 0.8 inch. You will feel comfortable with rounded acrylic case and big colorful buttons. It looks very nice even it standing there! You can play games with a power bank / 5v power adapter / 3 AAA batteries. The kit includes a 5V USB power cable and a battery case. Install the battery case easily to make it portable. It is really cool that you can also change the brightness and volume. I learned how to soldering with this project. While I am on the path about soldering, I accidently soldering the wrong part on the board which make me realized that desoldering is really hard ao try to becareful all the time. 
+My project made up by a board that hold all the electronics and all the electronics, the soldering process make those parts all works well with each other under the good conductivity of the soldering merterial. There are several Power-supply Options – The game kit’s working voltage is DC 3.5-5.5V. It is at the same time handy and nice - After you done the whole kit with quality acrylic case, the kit’s size is 3 x 4.2 x 0.8 inch. You will feel comfortable with rounded acrylic case and big colorful buttons. It looks very nice even it standing there! You can play games with a power bank / 5v power adapter / 3 AAA batteries. The kit includes a 5V USB power cable and a battery case. Install the battery case easily to make it portable. It is really cool that you can also change the brightness and volume. I learned how to soldering with this project. 
+
+## Challenge
+
+In the jounrny of soldering, I faced one challenge, I accidently soldering the part on the board but in the wrong position. which I solved this problem by desoldering. I realized that desoldering is really hard, so in the future soldering projects, I try to becareful all the time. 
+
+## Next step
+
+I am looking forward to complete my robotic arm!
 
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
