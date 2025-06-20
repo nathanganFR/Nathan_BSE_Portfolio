@@ -47,11 +47,15 @@ For your second milestone, explain what you've worked on since your previous mil
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TiXjgwiSENg?si=6ddoSbokv7xfIw1o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-For your first milestone, describe what your project is and how you plan to build it. You can include:
-- An explanation about the different components of your project and how they will all integrate together
-- Technical progress you've made so far
-- Challenges you're facing and solving in your future milestones
-- What your plan is to complete your project
+## Description
+For my main project, my first milestone was to assemble and build the components of my robotic arm, which includes the structure of the arm itself and the 2-joystick controller. I chose this project primarily because of its significance and symbolism in robotics. This project is also the perfect difficulty level as it is not too hard but enough to challenge me in the right areas and expand my skill set. There are three main components to this project: the battery pack, the Arduino Nano board, and the structure of the arm itself. The battery pack is used to power the arm since it cannot function from the power provided by the computer alone. The Arduino Nano board is what facilitates communication between the computer and the arm + controller, which is how the arm is able to read code and able to move specific joints based on commands from the controller. The robotic arm has 4 main points of movement: the turning table on the bottom, the two joints on the arm, and the opening/closing of the claw at the top.
+
+## Challenges
+challenges I faced was finding and alternate design solution for my battery pack, since the size of batteries provide is smaller. I cut the connection wire and sodering the wire to the batterie box with the right size. Another challenge I faced was on teasting the servo motors, in the servo test process, all of the blue servo is not working at all enven through the wires is pluged in. But the black servo works well, after I serch on the internet, the blue servo requires sertain votage which is more than the laptop power can provide, after I plug the batteries into the Ardrino Nano board, the servo wors!
+
+## Next Steps
+My next steps from here are to code the controller to be able to move certain joints depending on the movement and direction of the individual joystick.
+
 
 # Starter project 
 
