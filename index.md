@@ -53,7 +53,7 @@ For your first milestone, describe what your project is and how you plan to buil
 - Challenges you're facing and solving in your future milestones
 - What your plan is to complete your project
 
-# Starter project Milestone
+# Starter project 
 
 ![Headstone Image](start up project.jpg)
 
