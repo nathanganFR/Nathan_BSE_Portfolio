@@ -28,6 +28,9 @@ There were many challenges during this process. I try to pair the bluetooth with
 ### Next Steps
 My next steps are to bringstrom and start working on my modifications.
 
+# Arm App Block Code
+![Headstone Image](app-block.png)
+**_First Block Code Iteration Figure #2_**
 
 
 
