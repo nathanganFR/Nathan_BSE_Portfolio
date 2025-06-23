@@ -45,71 +45,23 @@ My next steps are to design a app which will also be able to control the robotic
 <!---Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. -->
 
 ```c++
-#include <Servo.h>
 
-Servo servo1;
-Servo servo2;
-Servo servo3;
-Servo servo4;
-
-int servoAng1, servoAng2, servoAng3, servoAng4;
-
-void setup () {
-  Serial.begin(9600);
-  servo1.attach(5);  //Set the servo control pin as D4
-  servo2.attach(6);  //Set the servo control pin as D5
-  servo3.attach(7);  //Set the servo control pin as D6
-  servo4.attach(10);  //Set the servo control pin as D7
-}
-
-int data_processing(int x) {
-  if (x < 0) {
-    x = 0;
-  } 
-  if (x > 180) {
-    x = 180;
-  }
-
-  return x;
-}
-
-int joystick (int reading) {
-  reading = (reading / 100) - 5;
-
-  if (reading > -2 && reading < 0) {
-    reading = 0;
-  }
-
-  return reading;
-}
-
-void loop () {
-  int xL = joystick(analogRead(A0));
-  int yL = joystick(analogRead(A1));
-  int xR = joystick(analogRead(A2));
-  int yR = joystick(analogRead(A3));
-
-
-  servoAng1 += xL;
-  servoAng2 += yL;
-  servoAng3 += xR;
-  servoAng4 += yR;
-
-  servo1.write(servoAng1);
-  servo2.write(servoAng2);
-  servo3.write(servoAng3);
-  servo4.write(servoAng4);
-
-  servoAng1 = data_processing(servoAng1);
-  Serial.println(servo1.read());
-  servoAng2 = data_processing(servoAng2);
-  Serial.println(servo2.read()); 
-  servoAng3 = data_processing(servoAng3);
-  Serial.println(servo3.read());
-  servoAng4 = data_processing(servoAng4);
-  Serial.println(servo4.read());
-
-  delay(50);
+void setup() { 
+pinMode(3, INPUT); 
+Serial.begin(9600); 
+} 
+void loop(){
+int value = 0; 
+value = analogRead(A0); 
+Serial.print("X:"); 
+Serial.print(value, DEC); 
+value = analogRead(A1); 
+Serial.print(" | Y:"); 
+Serial.print(value, DEC); 
+value = digitalRead(3); 
+Serial.print(" | Z: "); 
+Serial.println(value, DEC); 
+delay(100); 
 }
 ```
 
