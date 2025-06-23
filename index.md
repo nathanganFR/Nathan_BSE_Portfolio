@@ -39,9 +39,81 @@ For my main project, my second milestone was to code my robotic arm, which the 2
 The challenge in this process is that I find the code does not run well in my computer so I have to find an altinate plan to replace the original library. By using the instruction on the internet, the new code works much better. another problem is that the servo test code initially doesn't work so I can not move on to the next step, by checking the schematics one more time, I realized that the servo pluged in the wrong pin, after ajust the test code, the servo do works well. 
 ## Next Steps
 My next steps are to design a app which will also be able to control the robotic arm and make sure bluetooth pair the phone in the right way.
+
+
+# Joystick test Code
+<!---Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. -->
+
+```c++
+#include <Servo.h>
+
+Servo servo1;
+Servo servo2;
+Servo servo3;
+Servo servo4;
+
+int servoAng1, servoAng2, servoAng3, servoAng4;
+
+void setup () {
+  Serial.begin(9600);
+  servo1.attach(5);  //Set the servo control pin as D4
+  servo2.attach(6);  //Set the servo control pin as D5
+  servo3.attach(7);  //Set the servo control pin as D6
+  servo4.attach(10);  //Set the servo control pin as D7
+}
+
+int data_processing(int x) {
+  if (x < 0) {
+    x = 0;
+  } 
+  if (x > 180) {
+    x = 180;
+  }
+
+  return x;
+}
+
+int joystick (int reading) {
+  reading = (reading / 100) - 5;
+
+  if (reading > -2 && reading < 0) {
+    reading = 0;
+  }
+
+  return reading;
+}
+
+void loop () {
+  int xL = joystick(analogRead(A0));
+  int yL = joystick(analogRead(A1));
+  int xR = joystick(analogRead(A2));
+  int yR = joystick(analogRead(A3));
+
+
+  servoAng1 += xL;
+  servoAng2 += yL;
+  servoAng3 += xR;
+  servoAng4 += yR;
+
+  servo1.write(servoAng1);
+  servo2.write(servoAng2);
+  servo3.write(servoAng3);
+  servo4.write(servoAng4);
+
+  servoAng1 = data_processing(servoAng1);
+  Serial.println(servo1.read());
+  servoAng2 = data_processing(servoAng2);
+  Serial.println(servo2.read()); 
+  servoAng3 = data_processing(servoAng3);
+  Serial.println(servo3.read());
+  servoAng4 = data_processing(servoAng4);
+  Serial.println(servo4.read());
+
+  delay(50);
+}
+```
+
 # First Milestone
-
-
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TiXjgwiSENg?si=6ddoSbokv7xfIw1o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -117,10 +189,4 @@ Don't forget to place the link of where to buy each component inside the quotati
 | Female to Female Connectors | Connecting the Arduino to the wired controller | $6.98 | <a href="https://www.amazon.com/EDGELEC-Breadboard-1pin-1pin-Connector-Multicolored/dp/B07GD312VG/ref=sr_1_4?crid=11X4PIA5EMMZO&keywords=female%2Bto%2Bfemale%2Bconnectors&qid=1689781475&s=industrial&sprefix=female%2Bto%2Bfemale%2Bconnector%2Cindustrial%2C150&sr=1-4&th=1"> Link </a> |
 | Joysticks | Allow the user to control the robot using a controller | $9.95 | <a href="https://tinkersphere.com/buttons-switches/922-joystick-breakout-module-arduino-raspberry-pi-compatible.html"> Link </a> |
 
-# Other Resources/Examples
-One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
-- [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
-- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
-- [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
-To watch the BSE tutorial on how to create a portfolio, click here.
