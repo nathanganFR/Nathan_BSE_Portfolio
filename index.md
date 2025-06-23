@@ -32,7 +32,228 @@ My next steps are to bringstrom and start working on my modifications.
 ![Headstone Image](Screenshot 2025-06-24 025655.png)
 **_First Block Code Iteration Figure #2_**
 
+# Arm App Arduino Code
+```c++
+#include "src/CokoinoArm.h"
+#include <SoftwareSerial.h>
+#define buzzerPin 9
 
+int screen, state, move, move2, move3;
+CokoinoArm arm;
+int xL,yL,xR,yR;
+SoftwareSerial btSerial(2, 3);
+const int act_max=170;   
+int act[act_max][4];  
+int dataIn[2];
+int num=0,num_do=0;
+
+void turnUD(void){
+  if(xL!=512){
+    if(0<=xL && xL<=100){arm.up(10);return;}
+    if(900<xL && xL<=1024){arm.down(10);return;} 
+    if(100<xL && xL<=200){arm.up(20);return;}
+    if(800<xL && xL<=900){arm.down(20);return;}
+    if(200<xL && xL<=300){arm.up(25);return;}
+    if(700<xL && xL<=800){arm.down(25);return;}
+    if(300<xL && xL<=400){arm.up(30);return;}
+    if(600<xL && xL<=700){arm.down(30);return;}
+    if(400<xL && xL<=480){arm.up(35);return;}
+    if(540<xL && xL<=600){arm.down(35);return;} 
+    }
+}
+void turnLR(void){
+  if(yL!=512){
+    if(0<=yL && yL<=100){arm.right(0);return;}
+    if(900<yL && yL<=1024){arm.left(0);return;}  
+    if(100<yL && yL<=200){arm.right(5);return;}
+    if(800<yL && yL<=900){arm.left(5);return;}
+    if(200<yL && yL<=300){arm.right(10);return;}
+    if(700<yL && yL<=800){arm.left(10);return;}
+    if(300<yL && yL<=400){arm.right(15);return;}
+    if(600<yL && yL<=700){arm.left(15);return;}
+    if(400<yL && yL<=480){arm.right(20);return;}
+    if(540<yL && yL<=600){arm.left(20);return;}
+  }
+}
+void turnCO(void){
+  if(arm.servo4.read()>7){
+    if(0<=xR && xR<=100){arm.close(0);return;}
+    if(900<xR && xR<=1024){arm.open(0);return;} 
+    if(100<xR && xR<=200){arm.close(5);return;}
+    if(800<xR && xR<=900){arm.open(5);return;}
+    if(200<xR && xR<=300){arm.close(10);return;}
+    if(700<xR && xR<=800){arm.open(10);return;}
+    if(300<xR && xR<=400){arm.close(15);return;}
+    if(600<xR && xR<=700){arm.open(15);return;}
+    if(400<xR && xR<=480){arm.close(20);return;}
+    if(540<xR && xR<=600){arm.open(20);return;} 
+    }
+  else{arm.servo4.write(8);
+
+  }  
+}
+
+void date_processing(int *x,int *y){
+  if(abs(512-*x)>abs(512-*y))
+    {*y = 512;}
+  else
+    {*x = 512;}
+}
+
+void buzzer(int H,int L){
+  while(yR<420){
+    digitalWrite(buzzerPin,HIGH);
+    delayMicroseconds(H);
+    digitalWrite(buzzerPin,LOW);
+    delayMicroseconds(L);
+    yR = arm.JoyStickR.read_y();
+    }
+  while(yR>600){
+    digitalWrite(buzzerPin,HIGH);
+    delayMicroseconds(H);
+    digitalWrite(buzzerPin,LOW);
+    delayMicroseconds(L);
+    yR = arm.JoyStickR.read_y();
+    }
+}
+
+void C_action(void){
+  if(yR>800){
+    int *p;
+    p=arm.captureAction();
+    for(char i=0;i<4;i++){
+    act[num][i]=*p;
+    p=p+1;     
+    }
+    num++;
+    num_do=num;
+    if(num>=act_max){
+      num=0;
+      buzzer(600,400);
+      }
+    while(yR>600){yR = arm.JoyStickR.read_y();}
+    //Serial.println(act[0][0]);
+  }
+}
+
+void Do_action(void){
+  if(yR<220) {
+    buzzer(200,300);
+    for(int i=0;i<num_do;i++) {
+      arm.do_action(act[i],15);
+    }
+    num=0;
+    while (yR<420) {
+      yR = arm.JoyStickR.read_y();
+    }
+    for(int i=0;i<2000;i++){
+      digitalWrite(buzzerPin,HIGH);
+      delayMicroseconds(200);
+      digitalWrite(buzzerPin,LOW);
+      delayMicroseconds(300);        
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(9600);
+  btSerial.begin(9600);
+  arm.ServoAttach(4,5,6,7);
+  arm.JoyStickAttach(A0,A1,A2,A3);
+  pinMode(buzzerPin,OUTPUT);
+  arm.servo1.write(90);
+  arm.servo2.write(90);
+  arm.servo3.write(90);
+  arm.servo4.write(90);
+}
+
+int val, cnt = 0;
+int v[2];
+void readBT() {
+  val = btSerial.read();
+  cnt++;
+  v[cnt] = val;
+  if (cnt == 2) {
+    cnt = 0;
+  }
+}
+
+int in_byte, array_index;
+void loop() {
+
+  if (btSerial.available() > 1) {  
+  in_byte = btSerial.read(); 
+  //Serial.println(in_byte);
+
+  if (in_byte == 0) {
+    array_index = 0;
+  }
+
+  if (in_byte == 7 || in_byte == 8 || in_byte == 9 || in_byte == 10) {
+    array_index = 1;
+    state = in_byte;
+    move = btSerial.read();
+    Serial.println(state);
+  } else {
+    array_index = 2;
+  }
+
+  dataIn[array_index] = in_byte;
+  //Serial.println(dataIn[2]);
+  //state = dataIn[1];
+  //array_index = array_index +1;
+}
+
+  if (state == 8) {
+    //move = dataIn[2];
+  
+
+    //dataIn[1] = move;
+    //Serial.println(move);
+    if(move == 1) {
+      arm.open(30); return;   
+    }
+
+    if(move == 2) {
+      arm.close(30); return;
+    }
+  }
+
+  if (state == 9) {
+    //move2 = dataIn[2];
+
+
+    if(move == 3) {
+      arm.left(30); return;
+    }
+    if(move == 4) {
+      arm.right(30); return;
+    }
+  }
+  if (state == 10) {
+    //move3 = dataIn[2];
+   
+    //arm.servo4.write(90);
+    if(move == 5) {
+      arm.down(30); return;
+    }
+    if(move == 6) {
+      arm.up(30); return;
+    }
+  }
+  if(state == 7) {
+    arm.servo1.write(90);
+    arm.servo2.write(90);
+    arm.servo3.write(90);
+    arm.servo4.write(90);
+  }
+  if(arm.servo4.read() < 7) {
+    arm.servo4.write(8);
+  }
+  //Serial.println(state);
+}
+
+```
 
 # Second Milestone
 
