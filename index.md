@@ -36,10 +36,9 @@ For your final milestone, explain the outcome of your project. Key details to in
 ## Description
 For my main project, my second milestone was to code my robotic arm, which the 2-joystick controller can be able to control the structure. Using code functions from the Servo library, the joysticks is able to control the movement of the servos angles and set it to a specific rotation point based on how much the joystick is pushed forward/backwards. The servo wires that are connected to the Arduino help the computer read which servo should be moved according to which joystick is moved. The battery ensures that enough voltage is moving through the entire circuit so the robotic arm has enough energy to move freely without having problems
 ## Challenges
-challenges I faced was finding and alternate design solution for my battery pack, since the size of batteries provide is smaller. I cut the connection wire and sodering the wire to the batterie box with the right size. Another challenge I faced was on teasting the servo motors, in the servo test process, all of the blue servo is not working at all enven through the wires is pluged in. But the black servo works well, after I serch on the internet, the blue servo requires sertain votage which is more than the laptop power can provide, after I plug the batteries into the Ardrino Nano board, the servo wors!
-
+The challenge in this process is that I find the code does not run well in my computer so I have to find an altinate plan to replace the original library. By using the instruction on the internet, the new code works much better. another problem is that the servo test code initially doesn't work so I can not move on to the next step, by checking the schematics one more time, I realized that the servo pluged in the wrong pin, after ajust the test code, the servo do works well. 
 ## Next Steps
-My next steps from here are to code the controller to be able to move certain joints depending on the movement and direction of the individual joystick.
+My next steps are to design a app which will also be able to control the robotic arm and make sure bluetooth pair the phone in the right way.
 # First Milestone
 
 
