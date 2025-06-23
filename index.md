@@ -54,6 +54,15 @@ challenges I faced was finding and alternate design solution for my battery pack
 ## Next Steps
 My next steps from here are to code the controller to be able to move certain joints depending on the movement and direction of the individual joystick.
 
+# Schematics 
+<!---Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. --->
+
+Schematics drawn by [**Cokoino**](https://github.com/Cokoino/CKK0006)
+
+![Headstone Image](robotic-arm.png)
+
+**_Servo/Joycon Wiring Diagram Figure #4_**
+
 
 # Starter project 
 
@@ -73,15 +82,6 @@ In the jounrny of soldering, I faced one challenge, I accidently soldering the p
 ## Next step
 
 I am looking forward to complete my robotic arm!
-
-# Schematics 
-<!---Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. --->
-
-Schematics drawn by [**Cokoino**](https://github.com/Cokoino/CKK0006)
-
-![Headstone Image](robotic-arm.png)
-
-**_Servo/Joycon Wiring Diagram Figure #4_**
 
 
 
