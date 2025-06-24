@@ -73,13 +73,13 @@ void loop(void)
 # Arm App Arduino Code
 ```c++
 #include "src/CokoinoArm.h"
-#include <SoftwareSerial.h>
+#include <SoftwareSerial.h> //set up BT
 #define buzzerPin 9
 
-int screen, state, move, move2, move3;
+int screen, state, move, move2, move3; \\ variables decide the motion of the arm.
 CokoinoArm arm;
 int xL,yL,xR,yR;
-SoftwareSerial btSerial(2, 3);
+SoftwareSerial btSerial(2, 3); \\ pin that connect BT device.
 const int act_max=170;   
 int act[act_max][4];  
 int dataIn[2];
@@ -194,7 +194,7 @@ void Do_action(void){
 }
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(9600); // BT communicate frequency.
   btSerial.begin(9600);
   arm.ServoAttach(4,5,6,7);
   arm.JoyStickAttach(A0,A1,A2,A3);
@@ -227,7 +227,7 @@ void loop() {
     array_index = 0;
   }
 
-  if (in_byte == 7 || in_byte == 8 || in_byte == 9 || in_byte == 10) {
+  if (in_byte == 7 || in_byte == 8 || in_byte == 9 || in_byte == 10) { //different signals recieved from the phone
     array_index = 1;
     state = in_byte;
     move = btSerial.read();
@@ -242,12 +242,8 @@ void loop() {
   //array_index = array_index +1;
 }
 
-  if (state == 8) {
-    //move = dataIn[2];
-  
+  if (state == 8) { // decide the claw open or close
 
-    //dataIn[1] = move;
-    //Serial.println(move);
     if(move == 1) {
       arm.open(30); return;   
     }
@@ -257,7 +253,7 @@ void loop() {
     }
   }
 
-  if (state == 9) {
+  if (state == 9) { //decide the rotation
     //move2 = dataIn[2];
 
 
@@ -268,7 +264,7 @@ void loop() {
       arm.right(30); return;
     }
   }
-  if (state == 10) {
+  if (state == 10) { //decide the arm motion.
     //move3 = dataIn[2];
    
     //arm.servo4.write(90);
@@ -279,7 +275,7 @@ void loop() {
       arm.up(30); return;
     }
   }
-  if(state == 7) {
+  if(state == 7) { //reset all servo to the 90 degree position.
     arm.servo1.write(90);
     arm.servo2.write(90);
     arm.servo3.write(90);
