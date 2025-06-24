@@ -281,6 +281,32 @@ My next steps are to research and start working on my modifications.
 ![Headstone Image](app-block.png)
 **_First Block Code Iteration Figure #2_**
 
+# HC-05 test code
+```C++
+#include <SoftwareSerial.h>
+
+SoftwareSerial btSerial(10, 11);
+
+void setup()
+{
+   Serial.begin(9600);
+   Serial.println("Bluetooth test program");
+   btSerial.begin(9600);
+   btSerial.println("Bluetooth test program");
+}
+
+void loop(void)
+{
+  if(Serial.available())
+  {
+   btSerial.print(char(Serial.read()));
+  }
+  if(btSerial.available())
+  {
+   Serial.print(char(btSerial.read()));
+  }
+}
+```
 # Arm App Arduino Code
 ```c++
 #include "CokoinoArm.h"
