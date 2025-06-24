@@ -44,6 +44,7 @@ My next steps are to bringstrom and start working on my modifications.
 **_First Block Code Iteration Figure #2_**
 
 # HC-05 test code
+sources: https://forum.arduino.cc/t/arduino-to-smartphone-2-way-communication/632304/7
 ```C++
 #include <SoftwareSerial.h>
 
