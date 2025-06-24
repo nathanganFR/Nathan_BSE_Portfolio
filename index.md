@@ -12,6 +12,17 @@ You should comment out all portions of your portfolio that you have not complete
 
 
 ![Headstone Image](NathanG.HEIC)
+# Modification Milestone
+
+### Description
+my modification for this project is add wheels to my robotic arm. The app I designed will also contain more buttons for control the move of the robotic arm. so the robotic arm can do more job such as moving object from one location to another location.
+
+### Challenges
+There were many challenges during this process. Making sure the best place to put the motor for wheels and wireing. Because the original project toke a lot of avaliable space and pins for wireing, so alot of times modification is hard because it is make change on the things you already have done and worked well. But for the future use, updates should be really common. So I have to try different ways to fit the motor and wheels. 
+
+### Next Steps
+My next steps are to make more friends and help others.
+
   
 # Final Milestone
 
