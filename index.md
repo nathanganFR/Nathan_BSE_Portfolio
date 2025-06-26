@@ -34,7 +34,7 @@ My next steps are to make more friends and help others.
 my final milestone for this project is design an app on the phone that is able to complete the task include pair with bluetooth and replace the job of joysticks. The app I designed include a lot of different buttons that have the name accroding to its' function such as "up" "down" "left" "open"... when those buttons was touched on the phone, a specific signal like 7, 8, 9, 10 was send to the robotic arm, the arm will complete the motion accroding to the information recieved from my phone. 
 
 ### Challenges
-There were many challenges during this process. I try to pair the bluetooth with my phone, however, wrong wiring cause the bluetooth reciver gets into a wrong mode. Because of this, the phone is unable to  connect to the bluetooth reciver wich made it inpossiable to make reliable communication between phone and the robotic arm. To solve this, I serch a lot of instructions about the bluetooth reciver with orders like what to do to switch the mode, how to pair them etc...
+There were many challenges during this process. I try to pair the bluetooth with my phone, however, wrong wiring cause the bluetooth reciver gets into a wrong mode. Which is AT mode. Because of this, the phone is unable to  connect to the bluetooth reciver wich made it inpossiable to make reliable communication between phone and the robotic arm. To solve this, I serch a lot of instructions about the bluetooth reciver with orders like what to do to switch the mode back into data mode, how to pair them etc...
 
 ### Next Steps
 My next steps are to bringstrom and start working on my modifications.
