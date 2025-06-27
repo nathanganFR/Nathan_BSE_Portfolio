@@ -98,7 +98,7 @@ int in4 = 11;    // Direction pin for motor B
 int enB = 10;    // Enable pin for motor B
 
 // Variables to store joystick or state commands
-int screen, state, move, move2, move3;
+int screen, state, move, move2, move3;lk4
 CokoinoArm arm;  // Object for controlling the robotic arm
 
 // Bluetooth serial communication
@@ -185,7 +185,6 @@ void loop() {
       array_index = 1;            // Set array index to 1 for state data
       state = in_byte;            // Store the state
       move = btSerial.read();     // Read the move command
-      Serial.println(state);      // Print the state to the serial monitor for debugging
     } else {
       array_index = 2;            // Set array index to 2 for other data
     }
