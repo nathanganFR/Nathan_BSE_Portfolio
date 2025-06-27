@@ -86,291 +86,83 @@ void loop(void)
 ```
 # Arm App Arduino Code
 ```c++
-#include "src/CokoinoArm.h"         // Include the CokoinoArm library for controlling the arm
-#include <SoftwareSerial.h>          // Include SoftwareSerial library for Bluetooth communication
+#include "src/CokoinoArm.h"
+#include <SoftwareSerial.h>
 
-#define buzzerPin 9                 // Define the pin connected to the buzzer
-int enA = A0;                       // Enable pin for motor A
-int in1 = A1;                       // Control pin for motor A
-int in2 = A2;                       // Control pin for motor A
-int in3 = A3;                       // set pin in3 to A3
-int in4 = 11;                       // Control pin for motor B
-int enB = 10;                       // Enable pin for motor B
+// Pin assignments for motor control
+int enA = A0;   // Enable pin for motor A
+int in1 = A1;    // Direction pin for motor A
+int in2 = A2;    // Direction pin for motor A
+int in3 = A3;    // Direction pin for motor B
+int in4 = 11;    // Direction pin for motor B
+int enB = 10;    // Enable pin for motor B
+
+// Variables to store joystick or state commands
 int screen, state, move, move2, move3;
-CokoinoArm arm;                     // Create an instance of the CokoinoArm class to control the arm
-int xL, yL, xR, yR;                 // Variables for joystick inputs
-SoftwareSerial btSerial(2, 3);      // Initialize SoftwareSerial for Bluetooth (RX pin 2, TX pin 3)
+CokoinoArm arm;  // Object for controlling the robotic arm
 
-const int act_max = 170;            // Maximum number of actions that can be stored
-int act[act_max][4];                // Array to store action data
-int dataIn[2];                      // Array to store incoming Bluetooth data
-int num = 0, num_do = 0;            // Counters for actions
+// Bluetooth serial communication
+SoftwareSerial btSerial(2, 3);  // RX, TX for Bluetooth
+const int act_max = 170;        // Maximum actions that can be recorded
+int act[act_max][4];            // Array to store actions
+int dataIn[2];                  // Array for incoming data from Bluetooth
+int num = 0, num_do = 0;        // Counters for action tracking
 
-// Function to move the arm up or down based on joystick input (xL)
-void turnUD(void) {
-  if (xL != 512) {                  // Check if the joystick is not centered
-    if (0 <= xL && xL <= 100) {     // Move the arm up
-      arm.up(10);
-      return;
-    }
-    if (900 < xL && xL <= 1024) {   // Move the arm down
-      arm.down(10);
-      return;
-    }
-    // Other ranges for more gradual movements
-    if (100 < xL && xL <= 200) {
-      arm.up(20);
-      return;
-    }
-    if (800 < xL && xL <= 900) {
-      arm.down(20);
-      return;
-    }
-    if (200 < xL && xL <= 300) {
-      arm.up(25);
-      return;
-    }
-    if (700 < xL && xL <= 800) {
-      arm.down(25);
-      return;
-    }
-    if (300 < xL && xL <= 400) {
-      arm.up(30);
-      return;
-    }
-    if (600 < xL && xL <= 700) {
-      arm.down(30);
-      return;
-    }
-    if (400 < xL && xL <= 480) {
-      arm.up(35);
-      return;
-    }
-    if (540 < xL && xL <= 600) {
-      arm.down(35);
-      return;
-    }
-  }
-}
-
-// Function to move the arm left or right based on joystick input (yL)
-void turnLR(void) {
-  if (yL != 512) {                  // Check if the joystick is not centered
-    if (0 <= yL && yL <= 100) {     // Move the arm right
-      arm.right(0);
-      return;
-    }
-    if (900 < yL && yL <= 1024) {   // Move the arm left
-      arm.left(0);
-      return;
-    }
-    // Other ranges for more gradual movements
-    if (100 < yL && yL <= 200) {
-      arm.right(5);
-      return;
-    }
-    if (800 < yL && yL <= 900) {
-      arm.left(5);
-      return;
-    }
-    if (200 < yL && yL <= 300) {
-      arm.right(10);
-      return;
-    }
-    if (700 < yL && yL <= 800) {
-      arm.left(10);
-      return;
-    }
-    if (300 < yL && yL <= 400) {
-      arm.right(15);
-      return;
-    }
-    if (600 < yL && yL <= 700) {
-      arm.left(15);
-      return;
-    }
-    if (400 < yL && yL <= 480) {
-      arm.right(20);
-      return;
-    }
-    if (540 < yL && yL <= 600) {
-      arm.left(20);
-      return;
-    }
-  }
-}
-
-// Function to control the gripper (close or open) based on joystick input (xR)
-void turnCO(void) {
-  if (arm.servo4.read() > 7) {   // Only operate if servo4 is in an open position
-    if (0 <= xR && xR <= 100) {
-      arm.close(0);               // Close gripper with 0 movement
-      return;
-    }
-    if (900 < xR && xR <= 1024) {
-      arm.open(0);                // Open gripper with 0 movement
-      return;
-    }
-    // Other ranges for more gradual movements
-    if (100 < xR && xR <= 200) {
-      arm.close(5);
-      return;
-    }
-    if (800 < xR && xR <= 900) {
-      arm.open(5);
-      return;
-    }
-    if (200 < xR && xR <= 300) {
-      arm.close(10);
-      return;
-    }
-    if (700 < xR && xR <= 800) {
-      arm.open(10);
-      return;
-    }
-    if (300 < xR && xR <= 400) {
-      arm.close(15);
-      return;
-    }
-    if (600 < xR && xR <= 700) {
-      arm.open(15);
-      return;
-    }
-    if (400 < xR && xR <= 480) {
-      arm.close(20);
-      return;
-    }
-    if (540 < xR && xR <= 600) {
-      arm.open(20);
-      return;
-    }
-  } else {
-    arm.servo4.write(8);          // If servo4 is not ready, reset it
-  }
-}
-
-// Function to process joystick input and adjust movement direction
-void date_processing(int *x, int *y) {
-  if (abs(512 - *x) > abs(512 - *y)) {
-    *y = 512;   // Adjust y-axis if x-axis input is greater
-  } else {
-    *x = 512;   // Adjust x-axis if y-axis input is greater
-  }
-}
-
-// Function to control the buzzer based on yR joystick input
-void buzzer(int H, int L) {
-  while (yR < 420) {   // If yR is below a certain threshold
-    digitalWrite(buzzerPin, HIGH);
-    delayMicroseconds(H);
-    digitalWrite(buzzerPin, LOW);
-    delayMicroseconds(L);
-    yR = arm.JoyStickR.read_y();  // Update yR value from joystick
-  }
-  while (yR > 600) {   // If yR is above a certain threshold
-    digitalWrite(buzzerPin, HIGH);
-    delayMicroseconds(H);
-    digitalWrite(buzzerPin, LOW);
-    delayMicroseconds(L);
-    yR = arm.JoyStickR.read_y();  // Update yR value from joystick
-  }
-}
-
-// Function to capture an action sequence when the joystick is moved
-void C_action(void) {
-  if (yR > 800) {            // If joystick is moved upward
-    int *p;
-    p = arm.captureAction(); // Capture action data
-    for (char i = 0; i < 4; i++) {
-      act[num][i] = *p;       // Store captured data in the actions array
-      p = p + 1;             
-    }
-    num++;                    // Increment the action counter
-    num_do = num;             // Store the current number of actions
-    if (num >= act_max) {     // If the max number of actions is reached
-      num = 0;                 // Reset the counter
-      buzzer(600, 400);        // Buzzer feedback
-    }
-    while (yR > 600) {         // Wait until joystick is centered again
-      yR = arm.JoyStickR.read_y();
-    }
-  }
-}
-
-// Function to perform a stored action sequence
-void Do_action(void) {
-  if (yR < 220) {              // If joystick is moved downward
-    buzzer(200, 300);          // Buzzer feedback
-    for (int i = 0; i < num_do; i++) {   // Perform stored actions
-      arm.do_action(act[i], 15);
-    }
-    num = 0;                   // Reset action counter
-    while (yR < 420) {         // Wait until joystick is centered again
-      yR = arm.JoyStickR.read_y();
-    }
-    // Additional buzzer feedback after performing actions
-    for (int i = 0; i < 2000; i++) {
-      digitalWrite(buzzerPin, HIGH);
-      delayMicroseconds(200);
-      digitalWrite(buzzerPin, LOW);
-      delayMicroseconds(300);
-    }
-  }
-}
-
-// Motor control functions
+// Function to drive the robot forward
 void driveforward() {
-  digitalWrite(in1, HIGH);    // Set motor A direction
-  digitalWrite(in2, LOW);
-  digitalWrite(enA, 16);      // Enable motor A
-  digitalWrite(in3, LOW);     // Set motor B direction
-  digitalWrite(in4, HIGH);
-  digitalWrite(enB, 16);      // Enable motor B
+  digitalWrite(in1, HIGH);  // Motor A forward
+  digitalWrite(in2, LOW);   // Motor A forward
+  digitalWrite(enA, 16);    // Enable motor A with a specific speed
+  digitalWrite(in3, LOW);   // Motor B forward
+  digitalWrite(in4, HIGH);  // Motor B forward
+  digitalWrite(enB, 16);    // Enable motor B with a specific speed
 }
 
+// Function to drive the robot backward
 void drivebackward() {
-  digitalWrite(in1, LOW);     // Set motor A direction
-  digitalWrite(in2, HIGH);
-  digitalWrite(enA, 16);      // Enable motor A
-  digitalWrite(in3, HIGH);    // Set motor B direction
-  digitalWrite(in4, LOW);
-  digitalWrite(enB, 16);      // Enable motor B
+  digitalWrite(in1, LOW);   // Motor A backward
+  digitalWrite(in2, HIGH);  // Motor A backward
+  digitalWrite(enA, 16);    // Enable motor A with a specific speed
+  digitalWrite(in3, HIGH);  // Motor B backward
+  digitalWrite(in4, LOW);   // Motor B backward
+  digitalWrite(enB, 16);    // Enable motor B with a specific speed
 }
 
+// Function to turn the robot right
 void turnright() {
-  digitalWrite(in1, HIGH);    // Set motor A direction
-  digitalWrite(in2, LOW);
-  digitalWrite(enA, 14);      // Enable motor A
-  digitalWrite(in3, HIGH);    // Set motor B direction
-  digitalWrite(in4, LOW);
-  digitalWrite(enB, 14);      // Enable motor B
+  digitalWrite(in1, HIGH);  // Motor A forward
+  digitalWrite(in2, LOW);   // Motor A forward
+  digitalWrite(enA, 14);    // Enable motor A with a slower speed
+  digitalWrite(in3, HIGH);  // Motor B backward
+  digitalWrite(in4, LOW);   // Motor B backward
+  digitalWrite(enB, 14);    // Enable motor B with a slower speed
 }
 
+// Function to turn the robot left
 void turnleft() {
-  digitalWrite(in1, LOW);     // Set motor A direction
-  digitalWrite(in2, HIGH);
-  digitalWrite(enA, 14);      // Enable motor A
-  digitalWrite(in3, LOW);     // Set motor B direction
-  digitalWrite(in4, HIGH);
-  digitalWrite(enB, 14);      // Enable motor B
+  digitalWrite(in1, LOW);   // Motor A backward
+  digitalWrite(in2, HIGH);  // Motor A backward
+  digitalWrite(enA, 14);    // Enable motor A with a slower speed
+  digitalWrite(in3, LOW);   // Motor B forward
+  digitalWrite(in4, HIGH);  // Motor B forward
+  digitalWrite(enB, 14);    // Enable motor B with a slower speed
 }
 
-// Setup function to initialize pins and serial communication
+// Setup function to initialize communication and hardware
 void setup() {
-  Serial.begin(9600);                // Start serial communication
-  btSerial.begin(9600);              // Start Bluetooth communication
+  Serial.begin(9600);                // Start serial communication for debugging
+  btSerial.begin(9600);              // Start Bluetooth serial communication
 
-  arm.ServoAttach(4, 5, 6, 7);       // Attach servos for the arm
-  arm.JoyStickAttach(A0, A1, A2, A3); // Attach joystick pins
-  pinMode(buzzerPin, OUTPUT);        // Set buzzer pin as output
+  arm.ServoAttach(4, 5, 6, 7);       // Attach servos to the specified pins for the robotic arm
 
-  // Initialize servos to the neutral position
+  // Initialize arm servos to the neutral (middle) position
   arm.servo1.write(90);
   arm.servo2.write(90);
   arm.servo3.write(90);
   arm.servo4.write(90);
 
-  pinMode(enA, OUTPUT);              // Set motor enable pins as outputs
+  // Initialize motor control pins as outputs
+  pinMode(enA, OUTPUT);
   pinMode(in1, OUTPUT);
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
@@ -378,88 +170,79 @@ void setup() {
   pinMode(enB, OUTPUT);
 }
 
-// Bluetooth reading function
-int val, cnt = 0;
-int v[2];
-void readBT() {
-  val = btSerial.read();    // Read Bluetooth data
-  cnt++;                    // Increment the counter
-  v[cnt] = val;             // Store the received data
-  if (cnt == 2) {           // If both data bytes have been received
-    cnt = 0;                // Reset the counter
-  }
-}
-
-// Main loop function to process Bluetooth commands and joystick inputs
+// Bluetooth data reading function
 int in_byte, array_index;
 void loop() {
-  if (btSerial.available() > 1) {     // If Bluetooth data is available
-    in_byte = btSerial.read();        // Read a byte of data
+  if (btSerial.available() > 1) {  // Check if Bluetooth data is available
+    in_byte = btSerial.read();     // Read a byte of data from Bluetooth
 
-    if (in_byte == 0) {               // If it's a command to reset the array
+    if (in_byte == 0) {             // If the byte is 0, reset the array index
       array_index = 0;
     }
 
+    // If the byte is a command state (7 to 13), assign the state and read the move value
     if (in_byte == 7 || in_byte == 8 || in_byte == 9 || in_byte == 10 || in_byte == 11 || in_byte == 12 || in_byte == 13) {
-      array_index = 1;               // Set the state based on the received data
-      state = in_byte;
-      move = btSerial.read();        // Read the movement command
-      Serial.println(state);         // Print the state to serial monitor
+      array_index = 1;            // Set array index to 1 for state data
+      state = in_byte;            // Store the state
+      move = btSerial.read();     // Read the move command
+      Serial.println(state);      // Print the state to the serial monitor for debugging
     } else {
-      array_index = 2;
+      array_index = 2;            // Set array index to 2 for other data
     }
 
-    dataIn[array_index] = in_byte;   // Store received data in array
+    dataIn[array_index] = in_byte;   // Store the incoming data in the array
   }
 
-  // Perform actions based on received state and move commands
-  if (state == 8) {
+  // Execute actions based on the state and move commands received from Bluetooth
+
+  if (state == 8) {  // Gripper control commands (open/close)
     if (move == 1) {
-      arm.open(30); return;           // Open gripper with 30 movement
+      arm.open(30);   // Open gripper with 30 movement
+      return;
     }
-
     if (move == 2) {
-      arm.close(30); return;          // Close gripper with 30 movement
+      arm.close(30);  // Close gripper with 30 movement
+      return;
     }
   }
 
-  if (state == 9) {
+  if (state == 9) {  // Arm left/right movement
     if (move == 3) {
-      arm.left(30);                   // Move arm to the left
+      arm.left(30);   // Move arm to the left
     }
     if (move == 4) {
-      arm.right(30);                  // Move arm to the right
+      arm.right(30);  // Move arm to the right
     }
   }
 
-  if (state == 10) {
+  if (state == 10) {  // Arm up/down movement
     if (move == 5) {
-      arm.down(30);                   // Move arm down
+      arm.down(30);   // Move arm down
     }
     if (move == 6) {
-      arm.up(30);                     // Move arm up
+      arm.up(30);     // Move arm up
     }
   }
 
-  if (state == 11) {
+  if (state == 11) {  // Robot movement (forward/backward)
     if (move == 1) {
-      driveforward();                 // Move robot forward
+      driveforward();  // Move robot forward
     }
     if (move == 2) {
-      drivebackward();                // Move robot backward
+      drivebackward(); // Move robot backward
     }
   }
 
-  if (state == 12) {
+  if (state == 12) {  // Robot turning (left/right)
     if (move == 4) {
-      turnright();                    // Turn robot right
+      turnright();     // Turn robot right
     }
     if (move == 3) {
-      turnleft();                     // Turn robot left
+      turnleft();      // Turn robot left
     }
   }
 
-  if (state == 13) {               // Stop all motors
+  if (state == 13) {  // Stop all motors
     digitalWrite(in1, LOW);
     digitalWrite(in2, LOW);
     digitalWrite(enA, 225);
@@ -468,7 +251,7 @@ void loop() {
     digitalWrite(enB, 225);
   }
 
-  // Reset arm servo positions when command 7 is received
+  // Reset all servos to the neutral position when state is 7
   if (state == 7) {
     arm.servo1.write(90);
     arm.servo2.write(90);
@@ -478,9 +261,10 @@ void loop() {
 
   // Ensure servo4 is in a safe state
   if (arm.servo4.read() < 7) {
-    arm.servo4.write(8);            // Reset servo4 position
+    arm.servo4.write(8);  // Reset servo4 position to a safe value
   }
 }
+
 
 
 ```
