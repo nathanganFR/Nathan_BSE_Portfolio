@@ -46,29 +46,43 @@ My next steps are to bringstrom and start working on my modifications.
 # HC-05 test code
 sources: https://forum.arduino.cc/t/arduino-to-smartphone-2-way-communication/632304/7
 ```C++
-#include <SoftwareSerial.h>
+#include <SoftwareSerial.h>     // Include the SoftwareSerial library for Bluetooth communication
 
+// Create a SoftwareSerial instance for Bluetooth communication on pins 10 (RX) and 11 (TX)
 SoftwareSerial btSerial(10, 11);
 
 void setup()
 {
+   // Start the Serial Monitor for debugging and set the baud rate to 9600
    Serial.begin(9600);
+
+   // Print a message to the Serial Monitor to indicate the program is starting
    Serial.println("Bluetooth test program");
+
+   // Start Bluetooth serial communication at 9600 baud
    btSerial.begin(9600);
+
+   // Send a message to the Bluetooth device for confirmation
    btSerial.println("Bluetooth test program");
 }
 
 void loop(void)
 {
+  // Check if data is available from the Serial Monitor
   if(Serial.available())
   {
-   btSerial.print(char(Serial.read()));
+    // Read one byte from the Serial Monitor and send it to the Bluetooth device
+    btSerial.print(char(Serial.read()));
   }
+
+  // Check if data is available from the Bluetooth device
   if(btSerial.available())
   {
-   Serial.print(char(btSerial.read()));
+    // Read one byte from the Bluetooth device and send it to the Serial Monitor
+    Serial.print(char(btSerial.read()));
   }
 }
+
 ```
 # Arm App Arduino Code
 ```c++
