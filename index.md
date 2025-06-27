@@ -19,7 +19,7 @@ my modification for this project is add wheels to my robotic arm. The app I desi
 
 ### Challenges
 There were many challenges during this process. Making sure the best place to put the motor for wheels and wireing. Because the original project toke a lot of avaliable space and pins for wireing, so alot of times modification is hard because it is make change on the things you already have done and worked well. But for the future use, updates should be really common. So I have to try different ways to fit the motor and wheels. 
-
+At the same time, three wheel system did not work well with the combine of robotic arm, the major problem is that three wheel is not enough to balance the robotic arm, the result is when I command the car to move forward, the car did not goes in to stright line, what I did is that I ask Vrinda to buy one extra wheel for me, after the new wheels arrivied and put on the original base, the balance problem no longer exist.
 ### Next Steps
 My next steps are to make more friends and help others.
 
