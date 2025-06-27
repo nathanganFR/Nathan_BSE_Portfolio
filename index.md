@@ -93,7 +93,7 @@ void loop(void)
 int enA = A0;                       // Enable pin for motor A
 int in1 = A1;                       // Control pin for motor A
 int in2 = A2;                       // Control pin for motor A
-int in3 = A3;                       // Control pin for motor B
+int in3 = A3;                       // set pin in3 to A3
 int in4 = 11;                       // Control pin for motor B
 int enB = 10;                       // Enable pin for motor B
 int screen, state, move, move2, move3;
