@@ -23,67 +23,6 @@ At the same time, three wheel system did not work well with the combine of robot
 ### Next Steps
 My next steps are to make more friends and help others.
 
-  
-# Final Milestone
-
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PvOY1IqD8Ro?si=JoSWD1lWNHYyDWAn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-### Description
-my final milestone for this project is design an app on the phone that is able to complete the task include pair with bluetooth and replace the job of joysticks. The app I designed include a lot of different buttons that have the name accroding to its' function such as "up" "down" "left" "open"... when those buttons was touched on the phone, a specific signal like 7, 8, 9, 10 was send to the robotic arm, the arm will complete the motion accroding to the information recieved from my phone. 
-
-### Challenges
-There were many challenges during this process. I try to pair the bluetooth with my phone, however, wrong wiring cause the bluetooth reciver gets into a wrong mode. Which is AT mode. Because of this, the phone is unable to  connect to the bluetooth reciver wich made it inpossiable to make reliable communication between phone and the robotic arm. To solve this, I serch a lot of instructions about the bluetooth reciver with orders like what to do to switch the mode back into data mode, how to pair them etc...
-
-### Next Steps
-My next steps are to bringstrom and start working on my modifications.
-
-# Arm App Block Code
-![Headstone Image](Screenshot 2025-06-24 025655.png)
-**_First Block Code Iteration Figure #2_**
-
-# HC-05 test code
-sources: https://forum.arduino.cc/t/arduino-to-smartphone-2-way-communication/632304/7
-```C++
-#include <SoftwareSerial.h>     // Include the SoftwareSerial library for Bluetooth communication
-
-// Create a SoftwareSerial instance for Bluetooth communication on pins 10 (RX) and 11 (TX)
-SoftwareSerial btSerial(10, 11);
-
-void setup()
-{
-   // Start the Serial Monitor for debugging and set the baud rate to 9600
-   Serial.begin(9600);
-
-   // Print a message to the Serial Monitor to indicate the program is starting
-   Serial.println("Bluetooth test program");
-
-   // Start Bluetooth serial communication at 9600 baud
-   btSerial.begin(9600);
-
-   // Send a message to the Bluetooth device for confirmation
-   btSerial.println("Bluetooth test program");
-}
-
-void loop(void)
-{
-  // Check if data is available from the Serial Monitor
-  if(Serial.available())
-  {
-    // Read one byte from the Serial Monitor and send it to the Bluetooth device
-    btSerial.print(char(Serial.read()));
-  }
-
-  // Check if data is available from the Bluetooth device
-  if(btSerial.available())
-  {
-    // Read one byte from the Bluetooth device and send it to the Serial Monitor
-    Serial.print(char(btSerial.read()));
-  }
-}
-
-```
 # Arm App Arduino Code
 ```c++
 #include "src/CokoinoArm.h"
@@ -249,6 +188,186 @@ void loop() {
     digitalWrite(in4, LOW);
     digitalWrite(enB, 225);
   }
+
+  // Reset all servos to the neutral position when state is 7
+  if (state == 7) {
+    arm.servo1.write(90);
+    arm.servo2.write(90);
+    arm.servo3.write(90);
+    arm.servo4.write(90);
+  }
+
+  // Ensure servo4 is in a safe state
+  if (arm.servo4.read() < 7) {
+    arm.servo4.write(8);  // Reset servo4 position to a safe value
+  }
+}
+
+
+
+```
+  
+# Final Milestone
+
+**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PvOY1IqD8Ro?si=JoSWD1lWNHYyDWAn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### Description
+my final milestone for this project is design an app on the phone that is able to complete the task include pair with bluetooth and replace the job of joysticks. The app I designed include a lot of different buttons that have the name accroding to its' function such as "up" "down" "left" "open"... when those buttons was touched on the phone, a specific signal like 7, 8, 9, 10 was send to the robotic arm, the arm will complete the motion accroding to the information recieved from my phone. 
+
+### Challenges
+There were many challenges during this process. I try to pair the bluetooth with my phone, however, wrong wiring cause the bluetooth reciver gets into a wrong mode. Which is AT mode. Because of this, the phone is unable to  connect to the bluetooth reciver wich made it inpossiable to make reliable communication between phone and the robotic arm. To solve this, I serch a lot of instructions about the bluetooth reciver with orders like what to do to switch the mode back into data mode, how to pair them etc...
+
+### Next Steps
+My next steps are to bringstrom and start working on my modifications.
+
+# Arm App Block Code
+![Headstone Image](Screenshot 2025-06-24 025655.png)
+**_First Block Code Iteration Figure #2_**
+
+# HC-05 test code
+sources: https://forum.arduino.cc/t/arduino-to-smartphone-2-way-communication/632304/7
+```C++
+#include <SoftwareSerial.h>     // Include the SoftwareSerial library for Bluetooth communication
+
+// Create a SoftwareSerial instance for Bluetooth communication on pins 10 (RX) and 11 (TX)
+SoftwareSerial btSerial(10, 11);
+
+void setup()
+{
+   // Start the Serial Monitor for debugging and set the baud rate to 9600
+   Serial.begin(9600);
+
+   // Print a message to the Serial Monitor to indicate the program is starting
+   Serial.println("Bluetooth test program");
+
+   // Start Bluetooth serial communication at 9600 baud
+   btSerial.begin(9600);
+
+   // Send a message to the Bluetooth device for confirmation
+   btSerial.println("Bluetooth test program");
+}
+
+void loop(void)
+{
+  // Check if data is available from the Serial Monitor
+  if(Serial.available())
+  {
+    // Read one byte from the Serial Monitor and send it to the Bluetooth device
+    btSerial.print(char(Serial.read()));
+  }
+
+  // Check if data is available from the Bluetooth device
+  if(btSerial.available())
+  {
+    // Read one byte from the Bluetooth device and send it to the Serial Monitor
+    Serial.print(char(btSerial.read()));
+  }
+}
+
+```
+# Arm App Arduino Code
+```c++
+#include "src/CokoinoArm.h"
+#include <SoftwareSerial.h>
+
+// Pin assignments for motor control
+int enA = A0;   // Enable pin for motor A
+int in1 = A1;    // Direction pin for motor A
+int in2 = A2;    // Direction pin for motor A
+int in3 = A3;    // Direction pin for motor B
+int in4 = 11;    // Direction pin for motor B
+int enB = 10;    // Enable pin for motor B
+
+// Variables to store joystick or state commands
+int screen, state, move, move2, move3;lk4
+CokoinoArm arm;  // Object for controlling the robotic arm
+
+// Bluetooth serial communication
+SoftwareSerial btSerial(2, 3);  // RX, TX for Bluetooth
+const int act_max = 170;        // Maximum actions that can be recorded
+int act[act_max][4];            // Array to store actions
+int dataIn[2];                  // Array for incoming data from Bluetooth
+int num = 0, num_do = 0;        // Counters for action tracking
+
+
+
+// Setup function to initialize communication and hardware
+void setup() {
+  Serial.begin(9600);                // Start serial communication for debugging
+  btSerial.begin(9600);              // Start Bluetooth serial communication
+
+  arm.ServoAttach(4, 5, 6, 7);       // Attach servos to the specified pins for the robotic arm
+
+  // Initialize arm servos to the neutral (middle) position
+  arm.servo1.write(90);
+  arm.servo2.write(90);
+  arm.servo3.write(90);
+  arm.servo4.write(90);
+
+  // Initialize motor control pins as outputs
+  pinMode(enA, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+  pinMode(enB, OUTPUT);
+}
+
+// Bluetooth data reading function
+int in_byte, array_index;
+void loop() {
+  if (btSerial.available() > 1) {  // Check if Bluetooth data is available
+    in_byte = btSerial.read();     // Read a byte of data from Bluetooth
+
+    if (in_byte == 0) {             // If the byte is 0, reset the array index
+      array_index = 0;
+    }
+
+    // If the byte is a command state (7 to 13), assign the state and read the move value
+    if (in_byte == 7 || in_byte == 8 || in_byte == 9 || in_byte == 10) {
+      array_index = 1;            // Set array index to 1 for state data
+      state = in_byte;            // Store the state
+      move = btSerial.read();     // Read the move command
+    } else {
+      array_index = 2;            // Set array index to 2 for other data
+    }
+
+    dataIn[array_index] = in_byte;   // Store the incoming data in the array
+  }
+
+  // Execute actions based on the state and move commands received from Bluetooth
+
+  if (state == 8) {  // Gripper control commands (open/close)
+    if (move == 1) {
+      arm.open(30);   // Open gripper with 30 movement
+      return;
+    }
+    if (move == 2) {
+      arm.close(30);  // Close gripper with 30 movement
+      return;
+    }
+  }
+
+  if (state == 9) {  // Arm left/right movement
+    if (move == 3) {
+      arm.left(30);   // Move arm to the left
+    }
+    if (move == 4) {
+      arm.right(30);  // Move arm to the right
+    }
+  }
+
+  if (state == 10) {  // Arm up/down movement
+    if (move == 5) {
+      arm.down(30);   // Move arm down
+    }
+    if (move == 6) {
+      arm.up(30);     // Move arm up
+    }
+  }
+
 
   // Reset all servos to the neutral position when state is 7
   if (state == 7) {
