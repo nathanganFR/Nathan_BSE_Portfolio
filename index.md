@@ -11,7 +11,7 @@ You should comment out all portions of your portfolio that you have not complete
 
 
 
-![Headstone Image](NathanG.HEIC)
+![Headstone Image](circut.png)
 # Modification Milestone
 
 ### Description
