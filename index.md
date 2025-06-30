@@ -15,7 +15,12 @@ You should comment out all portions of your portfolio that you have not complete
 # Modification Milestone
 
 ### Description
-my modification for this project is add wheels to my robotic arm. The app I designed will also contain more buttons for control the move of the robotic arm. so the robotic arm can do more job such as moving object from one location to another location. An H-bridge is an electronic circuit that switches the polarity of a voltage applied to a load. These circuits are often used in robotics and other applications to allow DC motors to run forwards or backwards. The name is derived from its common schematic diagram representation, with four switching elements configured as the branches of a letter "H" and the load connected as the cross-bar. It will used in my modification for driving the motors.
+My modification for this project is to add wheels to the robotic arm.
+The app I designed will also include more buttons to control the movement of the robotic arm, allowing it to perform additional tasks, such as moving objects from one location to another.
+I will use an H-bridge in my modification to drive the motors.
+An H-bridge is an electronic circuit that switches the polarity of voltage applied to a load. These circuits are commonly used in robotics and other applications to allow DC motors to run forwards or backwards. The name comes from its typical schematic diagram, which resembles the letter "H" — with four switching elements forming the sides and the load connected across the center.
+
+
 
 ### Challenges
 There were many challenges during this process. Making sure the best place to put the motor for wheels and wireing. Because the original project toke a lot of avaliable space and pins for wireing, so alot of times modification is hard because it is make change on the things you already have done and worked well. But for the future use, planing is really important for updates. So I have to try different ways to fit the motor and wheels. 
