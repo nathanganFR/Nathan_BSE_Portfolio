@@ -11,7 +11,7 @@ You should comment out all portions of your portfolio that you have not complete
 
 
 
-![Headstone Image](circut.png)
+
 # Modification Milestone
 
 ### Description
@@ -28,6 +28,8 @@ At the same time, three wheel system did not work well with the combine of robot
 ### Next Steps
 My next steps are to make more friends and help others.
 
+# Schematics 
+![Headstone Image](circut.png)
 # Arm App Arduino Code
 ```c++
 #include "src/CokoinoArm.h"
