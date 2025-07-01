@@ -23,8 +23,8 @@ An H-bridge is an electronic circuit that switches the polarity of voltage appli
 
 
 ### Challenges
-There were many challenges during this process. Making sure the best place to put the motor for wheels and wireing. Because the original project toke a lot of avaliable space and pins for wireing, so alot of times modification is hard because it is make change on the things you already have done and worked well. But for the future use, planing is really important for updates. So I have to try different ways to fit the motor and wheels. 
-At the same time, three wheel system did not work well with the combine of robotic arm, the major problem is that three wheel is not enough to balance the robotic arm, the result is when I command the car to move forward, the car did not goes in to stright line, what I did is that I ask Vrinda to buy one extra wheel for me, after the new wheels arrivied and put on the original base, the balance problem no longer exist.
+There were many challenges during this process, such as determining the best location for the motor and wiring for the wheels. The original project took up a lot of available space and pins for wiring, so modifications were often difficult because it required changing things that had already been done and worked well. However, for future updates, planning is crucial. I had to try different methods to fit the motor and wheels properly.
+At the same time, the three-wheel system didn’t work well in combination with the robotic arm. The main issue was that three wheels were not enough to balance the robotic arm. As a result, when I commanded the car to move forward, it didn’t go in a straight line. What I did was ask Vrinda to buy an extra wheel for me. After the new wheel arrived and was added to the original base, the balance issue was resolved.
 ### Next Steps
 My next steps are to make more friends and help others.
 
@@ -221,10 +221,11 @@ void loop() {
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PvOY1IqD8Ro?si=JoSWD1lWNHYyDWAn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Description
-my final milestone for this project is design an app on the phone that is able to complete the task include pair with bluetooth and replace the job of joysticks. The app I designed include a lot of different buttons that have the name accroding to its' function such as "up" "down" "left" "open"... when those buttons was touched on the phone, a specific signal like 7, 8, 9, 10 was send to the robotic arm, the arm will complete the motion accroding to the information recieved from my phone. 
+My final milestone for this project is to design an app on the phone that can complete tasks, including pairing with Bluetooth and replacing the job of joysticks. The app I designed includes many buttons, each labeled according to its function, such as "up," "down," "left," "open," etc. When these buttons are pressed on the phone, a specific signal (like 7, 8, 9, 10) is sent to the robotic arm, and the arm will perform the corresponding action based on the information received from my phone.
 
 ### Challenges
-There were many challenges during this process. I try to pair the bluetooth with my phone, however, wrong wiring cause the bluetooth reciver gets into a wrong mode. Which is AT mode. Because of this, the phone is unable to  connect to the bluetooth reciver wich made it inpossiable to make reliable communication between phone and the robotic arm. To solve this, I serch a lot of instructions about the bluetooth reciver with orders like what to do to switch the mode back into data mode, how to pair them etc...
+There were many challenges during this process. I tried to pair the Bluetooth with my phone, but incorrect wiring caused the Bluetooth receiver to enter the wrong mode—AT mode. Because of this, the phone was unable to connect to the Bluetooth receiver, making it impossible to establish reliable communication between the phone and the robotic arm. To solve this, I searched through many instructions about the Bluetooth receiver, including how to switch it back into data mode, how to pair it, and other troubleshooting steps.
+
 
 ### Next Steps
 My next steps are to bringstrom and start working on my modifications.
@@ -401,9 +402,9 @@ void loop() {
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-TGl8HuMn2U?si=Ygdgz4_ftY6ROVnL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
-For my main project, my second milestone was to code my robotic arm, which the 2-joystick controller can be able to control the structure. Using code functions from the Servo library, the joysticks is able to control the movement of the servos angles and set it to a specific rotation point based on how much the joystick is pushed forward/backwards. The servo wires that are connected to the Arduino help the computer read which servo should be moved according to which joystick is moved. The battery ensures that enough voltage is moving through the entire circuit so the robotic arm has enough energy to move freely without having problems
+For my main project, my second milestone was to code the robotic arm so that it could be controlled by the 2-joystick controller. Using functions from the Servo library, the joysticks are able to control the angles of the servos and set them to specific rotation points based on how much the joystick is pushed forward or backward. The servo wires connected to the Arduino allow the system to determine which servo should be moved based on which joystick is being used. The battery ensures that enough voltage flows through the entire circuit, providing the robotic arm with enough power to move freely without any issues.
 ## Challenges
-The challenge in this process is that I find the code does not run well in my computer so I have to find an altinate plan to replace the original library. By using the instruction on the internet, the new code works much better. another problem is that the servo test code initially doesn't work so I can not move on to the next step, by checking the schematics one more time, I realized that the servo pluged in the wrong pin, I switch the number of pin in the setup of the code, after ajust the test code, the servo do works well. 
+The challenge in this process was that I found the code didn’t run properly on my computer, so I had to find an alternative plan to replace the original library. By following instructions I found online, the new code worked much better. Another problem was that the servo test code initially didn’t work, so I couldn’t move on to the next step. After double-checking the schematics, I realized that the servo was plugged into the wrong pin. I switched the pin numbers in the setup of the code, and after adjusting the test code, the servo worked perfectly.
 ## Next Steps
 My next steps are to design a app which will also be able to control the robotic arm and make sure bluetooth pair the phone in the right way.
 
@@ -578,10 +579,13 @@ delay(100);
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TiXjgwiSENg?si=6ddoSbokv7xfIw1o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
-For my main project, my first milestone was to assemble and build the components of my robotic arm, which includes the structure of the arm itself and the 2-joystick controller. I chose this project primarily because of its significance and symbolism in robotics. This project is also the perfect difficulty level as it is not too hard but enough to challenge me in the right areas and expand my skill set. There are three main components to this project: the battery pack, the Arduino Nano board, and the structure of the arm itself. The battery pack is used to power the arm since it cannot function from the power provided by the computer alone. The Arduino Nano board is what facilitates communication between the computer and the arm + controller, which is how the arm is able to read code and able to move specific joints based on commands from the controller. The robotic arm has 4 main points of movement: the turning table on the bottom, the two joints on the arm, and the opening/closing of the claw at the top.
+For my main project, my first milestone was to assemble and build the components of my robotic arm, which includes the arm's structure and the 2-joystick controller. I chose this project primarily because of its significance and symbolism in robotics. It also provides the perfect level of difficulty, as it's not too hard but challenging enough to expand my skill set in the right areas.
+There are three main components to this project: the battery pack, the Arduino Nano board, and the arm’s structure. The battery pack powers the arm, as it cannot run on the power provided by the computer alone. The Arduino Nano board facilitates communication between the computer, the arm, and the controller, enabling the arm to interpret code and move specific joints based on commands from the controller.
+The robotic arm has four main points of movement: the turning table at the base, the two joints on the arm, and the opening/closing of the claw at the top.
 
 ## Challenges
-challenges I faced was finding and alternate design solution for my battery pack, since the size of batteries provide is smaller. I cut the connection wire and sodering the wire to the batterie box with the right size. Another challenge I faced was on teasting the servo motors, in the servo test process, all of the blue servo is not working at all enven through the wires is pluged in. But the black servo works well, after I serch on the internet, the blue servo requires sertain votage which is more than the laptop power can provide, after I plug the batteries into the Ardrino Nano board, the servo wors!
+One challenge I faced was finding an alternate design solution for my battery pack, as the batteries provided were smaller. I cut the connection wire and soldered it to the battery box of the appropriate size.
+Another challenge occurred while testing the servo motors. During the servo test process, all of the blue servos weren’t working at all, even though the wires were plugged in properly. However, the black servo worked fine. After researching online, I found that the blue servos require a certain voltage, which exceeds the power that the laptop can provide. Once I connected the battery pack to the Arduino Nano board, the blue servo worked!
 
 ## Next Steps
 My next steps from here are to code the controller to be able to move certain joints depending on the movement and direction of the individual joystick.
@@ -604,12 +608,15 @@ Schematics drawn by [**Cokoino**](https://github.com/Cokoino/CKK0006)
 
 ## Description
 
-My project is DIY Solder Project Game Kit that have 5 Retro Classic Games for Electronic Soldering Practice and Learning, Comfortable Acrylic Case and Handheld Size, Ideal Gift for Family and Friends by VOGURTIME
-My project made up by a board that hold all the electronics and all the electronics, the soldering process make those parts all works well with each other under the good conductivity of the soldering merterial. There are several Power-supply Options – The game kit’s working voltage is DC 3.5-5.5V. It is at the same time handy and nice - After you done the whole kit with quality acrylic case, the kit’s size is 3 x 4.2 x 0.8 inch. You will feel comfortable with rounded acrylic case and big colorful buttons. It looks very nice even it standing there! You can play games with a power bank / 5v power adapter / 3 AAA batteries. The kit includes a 5V USB power cable and a battery case. Install the battery case easily to make it portable. It is really cool that you can also change the brightness and volume. I learned how to soldering with this project. 
+My project is the DIY Solder Project Game Kit, which includes 5 retro classic games for electronic soldering practice and learning. The kit comes with a comfortable acrylic case and is handheld in size, making it an ideal gift for family and friends.
+The project consists of a board that holds all the electronic components. Through the soldering process, these parts are connected to work together efficiently, ensuring good conductivity through the soldering material.
+There are several power supply options – the game kit operates at a voltage of DC 3.5-5.5V. Once the kit is assembled, it fits into a high-quality acrylic case with dimensions of 3 x 4.2 x 0.8 inches. The rounded acrylic case and large, colorful buttons make it easy to handle and comfortable to play with. It looks great even when just standing there!
+You can power the kit using a power bank, a 5V power adapter, or 3 AAA batteries. The kit also includes a 5V USB power cable and a battery case, which can be easily installed to make the kit portable. It’s really cool that you can adjust both the brightness and the volume.
+I learned how to solder while working on this project.
 
 ## Challenge
 
-In the jounrny of soldering, I faced one challenge, I accidently soldering the part on the board but in the wrong position. which I solved this problem by desoldering. I realized that desoldering is really hard, so in the future soldering projects, I try to becareful all the time. 
+During the soldering process, I faced a challenge when I accidentally soldered a part onto the board in the wrong position. I solved this by desoldering it, but I quickly realized that desoldering is quite difficult. As a result, I learned to be more careful in future soldering projects.
 
 ## Next step
 
