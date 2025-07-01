@@ -1,7 +1,7 @@
 # Phone-Controlled Robotic Arm
 This robotic arm has the ability to flex and grab objects around it using the help of the servos at each of its joints. You can control the arm in two ways: the 2-joystick controller or on an app on your phone. 
 
-You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
+
 
 
 
@@ -29,6 +29,7 @@ At the same time, the three-wheel system didn’t work well in combination with 
 My next steps are to make more friends and help others.
 
 # Schematics 
+the final schematics with motor and arm parts combined.
 ![Headstone Image](circut.png)
 # Arm App Arduino Code
 ```c++
@@ -597,7 +598,7 @@ Schematics drawn by [**Cokoino**](https://github.com/Cokoino/CKK0006)
 
 ![Headstone Image](robotic-arm.png)
 
-**_Servo/Joycon Wiring Diagram Figure #4_**
+Servo/Joycon Wiring Diagram 
 
 
 # Starter project 
