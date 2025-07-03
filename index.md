@@ -33,6 +33,8 @@ My next steps are to make more friends and help others.
 # Schematics 
 the final schematics with motor and arm parts combined.
 ![Headstone Image](circut.png)
+# Arm App block code
+![Headstone Image]()
 # Arm App Arduino Code
 ```c++
 #include "src/CokoinoArm.h"
