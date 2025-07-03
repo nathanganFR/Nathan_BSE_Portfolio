@@ -29,15 +29,18 @@ There were many challenges during this process, such as determining the best loc
 At the same time, the three-wheel system didn’t work well in combination with the robotic arm. The main issue was that three wheels were not enough to balance the robotic arm. As a result, when I commanded the car to move forward, it didn’t go in a straight line. What I did was ask Vrinda to buy an extra wheel for me. After the new wheel arrived and was added to the original base, the balance issue was resolved.
 ### Next Steps
 My next steps are to make more friends and help others.
-
+# Final APP on phone
+The final schematics with motor and arm parts combined.
+![Headstone Image]()
+Figure #6
 # Schematics 
 The final schematics with motor and arm parts combined.
 ![Headstone Image](circut.png)
-Figure #4
+Figure #5
 # Arm App block code
 ![Headstone Image](appcode.png)
 Final block code.
-Figure #3
+Figure #4
 # Arm App Arduino Code
 ```c++
 #include "src/CokoinoArm.h"
