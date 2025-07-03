@@ -31,10 +31,13 @@ At the same time, the three-wheel system didn’t work well in combination with 
 My next steps are to make more friends and help others.
 
 # Schematics 
-the final schematics with motor and arm parts combined.
+The final schematics with motor and arm parts combined.
 ![Headstone Image](circut.png)
+Figure #4
 # Arm App block code
 ![Headstone Image](appcode.png)
+Final block code.
+Figure #3
 # Arm App Arduino Code
 ```c++
 #include "src/CokoinoArm.h"
@@ -237,7 +240,7 @@ My next steps are to bringstrom and start working on my modifications.
 
 # Arm App Block Code
 ![Headstone Image](Screenshot 2025-06-24 025655.png)
-**_First Block Code Iteration Figure #2_**
+First Block Code  Figure #2
 
 # HC-05 test code
 sources: https://forum.arduino.cc/t/arduino-to-smartphone-2-way-communication/632304/7
@@ -603,7 +606,7 @@ Schematics drawn by [**Cokoino**](https://github.com/Cokoino/CKK0006)
 ![Headstone Image](robotic-arm.png)
 
 Servo/Joycon Wiring Diagram 
-
+figure #1
 
 # Starter project 
 
