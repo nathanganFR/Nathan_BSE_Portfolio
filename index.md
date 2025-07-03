@@ -243,7 +243,7 @@ My next steps are to bringstrom and start working on my modifications.
 
 # Final APP on phone
 The app on the phone that can control the arm.
-![Headstone Image](appp2.jpg)
+![Headstone Image](appp1.jpg)
 Figure #3
 # Arm App Block Code
 ![Headstone Image](Screenshot 2025-06-24 025655.png)
