@@ -28,7 +28,7 @@ An H-bridge is an electronic circuit that switches the polarity of voltage appli
 There were many challenges during this process, such as determining the best location for the motor and wiring for the wheels. The original project took up a lot of available space and pins for wiring, so modifications were often difficult because it required changing things that had already been done and worked well. However, for future updates, planning is crucial. I had to try different methods to fit the motor and wheels properly.
 At the same time, the three-wheel system didn’t work well in combination with the robotic arm. The main issue was that three wheels were not enough to balance the robotic arm. As a result, when I commanded the car to move forward, it didn’t go in a straight line. What I did was ask Vrinda to buy an extra wheel for me. After the new wheel arrived and was added to the original base, the balance issue was resolved.
 ### Next Steps
-My next steps are to make more friends and help others.
+My next steps are to make other projects.
 # Final APP on phone
 The final app on the phone that can control the car and the arm.
 ![Headstone Image](appp2.jpg)
