@@ -30,8 +30,8 @@ At the same time, the three-wheel system didn’t work well in combination with 
 ### Next Steps
 My next steps are to make more friends and help others.
 # Final APP on phone
-The final schematics with motor and arm parts combined.
-![Headstone Image]()
+The final app on the phone that can control the car and the arm.
+![Headstone Image](appp2.jpg)
 Figure #6
 # Schematics 
 The final schematics with motor and arm parts combined.
@@ -241,6 +241,10 @@ There were many challenges during this process. I tried to pair the Bluetooth wi
 ### Next Steps
 My next steps are to bringstrom and start working on my modifications.
 
+# Final APP on phone
+The app on the phone that can control the arm.
+![Headstone Image](appp2.jpg)
+Figure #3
 # Arm App Block Code
 ![Headstone Image](Screenshot 2025-06-24 025655.png)
 First Block Code  Figure #2
