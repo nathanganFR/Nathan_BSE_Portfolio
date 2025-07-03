@@ -7,7 +7,7 @@ This robotic arm has the ability to flex and grab objects around it using the he
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Nathan G | valley christian high school | Electrical Engineering | Incoming Senior
+| Nathan G | Valley Christian High School | Electrical Engineering | Incoming Senior
 
 
 ![Headstone Image](1234.png)
