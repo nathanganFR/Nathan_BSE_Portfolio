@@ -1,5 +1,5 @@
 # Phone-Controlled Robotic Arm
-This robotic arm has the ability to flex and grab objects around it using the help of the servos at each of its joints. You can control the arm in two ways: the 2-joystick controller or on an app on your phone. 
+This robotic arm has the ability to flex and grab objects around it using the help of the servos at each of its joints. You can control the arm in two ways: the 2-joystick controller or on an app on your phone. After modification, it is able to move around to complete more task.
 
 
 
